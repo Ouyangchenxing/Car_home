@@ -1,12 +1,12 @@
 {
   "id": "ziye.app.sub",
-  "name": "ziye 汽车之家订阅",
+  "name": "ziye 汽车之家极速版订阅",
   "author": "@ZIYE",
   "icon": "",
   "repo": "https://github.com/ziye12/QCZJSPEED",
   "apps": [{
     "id": "qczjspeed",
-    "name": "企鹅读书",
+    "name": "汽车之家极速版",
     "keys": ["GetUserInfourl", "GetUserInfoheader", "coinbody", "accountManageheader", "taskbody", "activitybody", "addCoinbody", "addCoin2body", "reportAssbody", "reportAssheader", "cointowalletbody","GetUserInfourl2", "GetUserInfoheader2", "coinbody2", "accountManageheader2", "taskbody2", "activitybody2", "addCoinbody2", "addCoin2body2", "reportAssbody2", "reportAssheader2", "cointowalletbody2","GetUserInfourl3", "GetUserInfoheader3", "coinbody3", "accountManageheader3", "taskbody3", "activitybody3", "addCoinbody3", "addCoin2body3", "reportAssbody3", "reportAssheader3", "cointowalletbody3"],
     "author": "@ziye",
     "settings": [{
