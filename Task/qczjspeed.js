@@ -29,8 +29,6 @@ GetUserInfoheaderVal 👉QCZJ_GetUserInfoHEADER
 点击 我>>钱包 获取钱包余额 header
 accountManageheaderVal👉 accountManageHEADER
 
-点击 活动>>分享赚现金 自己助力自己 获取助力任务header
-reportAssbodyVal     👉  reportAssHEADER
 
 第三步 注释header重写，添加body重写 添加时段body重写  获取完后注释
 
@@ -43,8 +41,9 @@ activitybodyVal      👉  QCZJ_activityBODY
 addCoinbodyVal       👉  addCoinBODY
 addCoin2bodyVal      👉  addCoin2BODY
 
-点击 活动>>分享赚现金 自己助力自己 获取助力任务body
-reportAssheaderVal   👉  reportAssBODY
+点击 活动>>分享赚现金 自己助力自己 获取助力任务header  body 
+reportAssheaderVal   👉  reportAssHEADER
+reportAssbodyVal   👉  reportAssBODY
 
 点击 活动>>现金收入>>提现>>立即提现 获取提现body
 cointowalletbodyVal  👉  cointowalletBODY
@@ -461,7 +460,7 @@ if ($request && $request.url.indexOf("cointowallet") >= 0&&$request.body.indexOf
       await addCoin();
       await addCoin2();
       await reportAss();
-      await cointowallet();
+      //await cointowallet();
       await msgShow();
     }	  
   }
@@ -649,7 +648,7 @@ function reportAss(timeout = 0) {
     setTimeout( ()=>{
 		do out = Math.floor(Math.random()*10000000);
         while( out < 100 )		
-	   for(var i=0;i<6;i++){
+	   for(var i=0;i<1;i++){
 		 setTimeout( ()=>{	  
 	  let body = reportAssbodyVal.replace(/userAssistanceId=[0-9]{0,10}/, `userAssistanceId=${out}`)
       let url = {
