@@ -13,39 +13,46 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/ziye
 
 谢谢支持
 
+12.20 优化重写说明
 
-⚠️一共5个位置 9个ck  11条 Secrets 
+⚠️一共6个位置 9个ck  11条 Secrets 
 多账号换行
 
-点击 我 获取用户名ck
+第一步 添加  hostname=mobile.app.autohome.com.cn,pay.autohome.com.cn,openapi.autohome.com.cn,
+
+第二步 添加header重写 
+
+点击 我 获取用户名url header
 GetUserInfourlVal    👉  QCZJ_GetUserInfoURL  
 GetUserInfoheaderVal 👉QCZJ_GetUserInfoHEADER
 
-点击 活动 获取账户信息 签到任务 活动ck
+点击 我>>钱包 获取钱包余额 header
+accountManageheaderVal👉 accountManageHEADER
+
+点击 活动>>分享赚现金 自己助力自己 获取助力任务header
+reportAssbodyVal     👉  reportAssHEADER
+
+第三步 注释header重写，添加body重写 添加时段body重写  获取完后注释
+
+点击 活动 获取账户信息 签到任务 活动body
 coinbodyVal          👉  QCZJ_coinBODY
 taskbodyVal          👉  QCZJ_taskBODY
 activitybodyVal      👉  QCZJ_activityBODY
 
-点击 我>>钱包 获取钱包余额 ck
-accountManageheaderVal👉 accountManageHEADER
-
-点击 首页>>右上角 获取时段 时段翻倍 ck
+点击 首页>>右上角 获取时段 时段翻倍 body
 addCoinbodyVal       👉  addCoinBODY
 addCoin2bodyVal      👉  addCoin2BODY
 
-点击 活动>>分享赚现金 自己助力自己 获取助力任务ck
-reportAssbodyVal     👉  reportAssHEADER
+点击 活动>>分享赚现金 自己助力自己 获取助力任务body
 reportAssheaderVal   👉  reportAssBODY
 
-点击 活动>>现金收入>>提现>>立即提现 获取提现ck
+点击 活动>>现金收入>>提现>>立即提现 获取提现body
 cointowalletbodyVal  👉  cointowalletBODY
 
 
 ⚠️主机名以及重写👇
-注意，请先获取header,然后注释header重写，再获取body，再注释body重写
 
 hostname=mobile.app.autohome.com.cn,pay.autohome.com.cn,openapi.autohome.com.cn,
-
 ############## 圈x
 #汽车之家极速版获取header
 https:\/\/(mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) url script-request-header https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
@@ -53,13 +60,8 @@ https:\/\/(mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||openapi
 #汽车之家极速版获取body
 https:\/\/(mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) url script-request-body https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
 
-
-#汽车之家极速版获取时段header
-http:\/\/mobile\.app\.autohome\.com\.cn\/* url script-request-header https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
-
 #汽车之家极速版获取时段body
 http:\/\/mobile\.app\.autohome\.com\.cn\/* url script-request-body https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
-
 
 
 
@@ -71,14 +73,8 @@ http-request (mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||open
 #汽车之家极速版获取body
 http-request (mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js,requires-body=true, tag=汽车之家极速版获取body
 
-#汽车之家极速版获取时段header
-http-request http:\/\/mobile\.app\.autohome\.com\.cn\/* script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, requires-header=true, tag=汽车之家极速版获取时段header
-
 #汽车之家极速版获取时段body
 http-request http:\/\/mobile\.app\.autohome\.com\.cn\/* script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js,requires-body=true, tag=汽车之家极速版获取时段body
-
-
-
 
 
 ############## surge
@@ -92,8 +88,6 @@ http-request http:\/\/mobile\.app\.autohome\.com\.cn\/* script-path=https://raw.
 #汽车之家极速版获取时段body
 汽车之家极速版获取时段body = type=http-request,pattern=http:\/\/mobile\.app\.autohome\.com\.cn\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, script-update-interval=0
 
-#汽车之家极速版获取时段header
-汽车之家极速版获取时段header = type=http-request,pattern=http:\/\/mobile\.app\.autohome\.com\.cn\/*,script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, 
 
 
 */
