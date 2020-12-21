@@ -14,9 +14,10 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 谢谢支持
 
 12.20 优化重写说明,优化时段重写
-12.21 修复boxjs配置错误
+12.21 修复boxjs配置错误，钱包ck易掉，故去除
 
-⚠️一共6个位置 9个ck  11条 Secrets 
+
+⚠️一共5个位置 8个ck  10条 Secrets 
 多账号换行
 
 第一步 添加  hostname=mobile.app.autohome.com.cn,pay.autohome.com.cn,openapi.autohome.com.cn,
@@ -26,9 +27,6 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 点击 我 获取用户名url header
 GetUserInfourlVal    👉  QCZJ_GetUserInfoURL  
 GetUserInfoheaderVal 👉QCZJ_GetUserInfoHEADER
-
-点击 我>>钱包 获取钱包余额 header
-accountManageheaderVal👉 accountManageHEADER
 
 
 第三步 注释header重写，添加body重写 添加时段body重写  获取完后注释
@@ -52,10 +50,10 @@ cointowalletbodyVal  👉  cointowalletBODY
 
 ⚠️主机名以及重写👇
 
-hostname=mobile.app.autohome.com.cn,pay.autohome.com.cn,openapi.autohome.com.cn,
+hostname=mobile.app.autohome.com.cn,openapi.autohome.com.cn,
 ############## 圈x
 #汽车之家极速版获取header
-https:\/\/(mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) url script-request-header https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
+https:\/\/(mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) url script-request-header https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
 
 #汽车之家极速版获取body
 https:\/\/(mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) url script-request-body https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js
@@ -68,7 +66,7 @@ http:\/\/mobile\.app\.autohome\.com\.cn\/fasthome\/mainpagecoin\/addCoin url scr
 ############## loon
 
 #汽车之家极速版获取header
-http-request (mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, requires-header=true, tag=汽车之家极速版获取header
+http-request (mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, requires-header=true, tag=汽车之家极速版获取header
 
 #汽车之家极速版获取body
 http-request (mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*) script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js,requires-body=true, tag=汽车之家极速版获取body
@@ -83,7 +81,7 @@ http:\/\/mobile\.app\.autohome\.com\.cn\/fasthome\/mainpagecoin\/addCoin script-
 汽车之家极速版获取body = type=http-request,pattern=(mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, script-update-interval=0
 
 #汽车之家极速版获取header
-汽车之家极速版获取header = type=http-request,pattern=(mobile\.app\.autohome\.com\.cn\/*||pay\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*),script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, 
+汽车之家极速版获取header = type=http-request,pattern=(mobile\.app\.autohome\.com\.cn\/*||openapi\.autohome\.com\.cn\/*),script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, 
 
 #汽车之家极速版获取时段body
 汽车之家极速版获取时段body = type=http-request,pattern=http:\/\/mobile\.app\.autohome\.com\.cn\/fasthome\/mainpagecoin\/addCoin,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ziye12/QCZJSPEED/master/Task/qczjspeed.js, script-update-interval=0
@@ -114,9 +112,6 @@ let middleGetUserInfoHEADER = [];
 const coinbodyArr = [];
 let coinbodyVal = "";
 let middlecoinBODY = [];
-const accountManageheaderArr = [];
-let accountManageheaderVal = "";
-let middleaccountManageHEADER = [];
 const taskbodyArr = [];
 let taskbodyVal = "";
 let middletaskBODY = [];
@@ -172,14 +167,6 @@ if ($.isNode()) {
   } else {
     middlecoinBODY = process.env.QCZJ_coinBODY.split();
   } 
-  if (
-    process.env.QCZJ_accountManageHEADER &&
-    process.env.QCZJ_accountManageHEADER.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    middleaccountManageHEADER = process.env.QCZJ_accountManageHEADER.split(COOKIES_SPLIT);
-  } else {
-    middleaccountManageHEADER = process.env.QCZJ_accountManageHEADER.split();
-  }  
     if (
     process.env.QCZJ_taskBODY &&
     process.env.QCZJ_taskBODY.indexOf(COOKIES_SPLIT) > -1
@@ -252,12 +239,7 @@ if ($.isNode()) {
     if (middlecoinBODY[item]) {
       coinbodyArr.push(middlecoinBODY[item]);
     }
-  });
-  Object.keys(middleaccountManageEADER).forEach((item) => {
-    if (middleaccountManageHEADER[item]) {
-      accountManageheaderArr.push(middleaccountManageHEADER[item]);
-    }
-  });    
+  }); 
   Object.keys(middletaskBODY).forEach((item) => {
     if (middletaskBODY[item]) {
       taskbodyArr.push(middletaskBODY[item]);
@@ -297,7 +279,6 @@ if ($.isNode()) {
   GetUserInfourlArr.push($.getdata("GetUserInfourl"));	
   GetUserInfoheaderArr.push($.getdata("GetUserInfoheader"));  
   coinbodyArr.push($.getdata("coinbody"));
-  accountManageheaderArr.push($.getdata("accountManageheader"));  
   taskbodyArr.push($.getdata("taskbody"));
   activitybodyArr.push($.getdata("activitybody"));
   addCoinbodyArr.push($.getdata("addCoinbody"));
@@ -312,7 +293,6 @@ if ($.isNode()) {
   GetUserInfourlArr.push($.getdata(`GetUserInfourl${i}`));	
   GetUserInfoheaderArr.push($.getdata(`GetUserInfoheader${i}`));  
   coinbodyArr.push($.getdata(`coinbody${i}`));
-  accountManageheaderArr.push($.getdata(`accountManageheader${i}`)); 
   taskbodyArr.push($.getdata(`taskbody${i}`));
   activitybodyArr.push($.getdata(`activitybody${i}`));
   addCoinbodyArr.push($.getdata(`addCoinbody${i}`));
@@ -348,15 +328,6 @@ if ($request && $request.url.indexOf("init") >= 0&& $request.url.indexOf("coin")
       `[${$.name + $.idx}] 获取账户信息body✅: 成功,coinbodyVal: ${coinbodyVal}`
     );
     $.msg($.name + $.idx, `获取账户信息body: 成功🎉`, ``);
-    } 
-//钱包余额
-if ($request && $request.url.indexOf("accountManage") >= 0) {
-    const accountManageheaderVal = JSON.stringify($request.headers);
-    if (accountManageheaderVal) $.setdata(accountManageheaderVal, "accountManageheader" + $.idx);
-    $.log(
-      `[${$.name + $.idx}] 获取钱包余额header✅: 成功,accountManageheaderVal: ${accountManageheaderVal}`
-    );
-    $.msg($.name + $.idx, `获取钱包余额header: 成功🎉`, ``);
     } 
 //签到任务
 if ($request && $request.url.indexOf("init") >= 0&& $request.url.indexOf("task") >= 0&&$request.body.indexOf("model=1")>=0) {
@@ -453,7 +424,6 @@ if (!GetUserInfourlArr[0]) {
   GetUserInfourlVal = GetUserInfourlArr[i];		
   GetUserInfoheaderVal = GetUserInfoheaderArr[i];  
   coinbodyVal = coinbodyArr[i];
-  accountManageheaderVal = accountManageheaderArr[i];
   taskbodyVal = taskbodyArr[i];	  
   activitybodyVal = activitybodyArr[i];
   addCoinbodyVal = addCoinbodyArr[i];
@@ -464,7 +434,6 @@ if (!GetUserInfourlArr[0]) {
       await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`) 
       await GetUserInfo();     
       await coin();
-      await accountManage();
       await task();
       await activity();
       await addCoin();
@@ -512,29 +481,6 @@ function coin(timeout = 0) {
           if (logs) $.log(`${$.name}, 账户信息🚩: ${data}`);
           $.coin = JSON.parse(data);
  $.message +='【账户信息】：今日金币'+$.coin.result.nowcoin+',账户余额'+$.coin.result.nowmoney+'元'+'\n';
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve()
-        }
-      })
-    },timeout)
-  })
-}
-//钱包余额
-function accountManage(timeout = 0) {
-  return new Promise((resolve) => {
-    setTimeout( ()=>{
-      let url = {
-        url: `https://pay.autohome.com.cn/site-wap/pay/my/accountManage.htm`,
-        headers: JSON.parse(accountManageheaderVal),
-      }
-      $.post(url, async(err, resp, data) => {
-        try {
-          if (logs) $.log(`${$.name}, 钱包余额🚩: ${data}`);
-          $.accountManage = JSON.parse(data);
-if($.accountManage.success==true)
-$.message +='【钱包余额】：'+$.accountManage.obj.availableBalance+'\n'; 
         } catch (e) {
           $.logErr(e, resp);
         } finally {
@@ -634,7 +580,7 @@ function addCoin2(timeout = 1000) {
         try {
           if (logs) $.log(`${$.name}, 时段翻倍🚩: ${data}`);
           $.addCoin2 = JSON.parse(data);
-if($.addCoin.returncode==0)
+if($.addCoin2.returncode==0)
        $.message +='【时段翻倍】：'+$.addCoin2.result.getcoinnum+'金币\n';
         } catch (e) {
           $.logErr(e, resp);
