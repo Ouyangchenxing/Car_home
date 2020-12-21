@@ -14,6 +14,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 谢谢支持
 
 12.20 优化重写说明,优化时段重写
+12.21 修复boxjs配置错误
 
 ⚠️一共6个位置 9个ck  11条 Secrets 
 多账号换行
@@ -308,25 +309,20 @@ if ($.isNode()) {
   let qczjCount = ($.getval('qczjCount') || '1') - 0;
   for (let i = 2; i <= qczjCount; i++) {
     if ($.getdata(`GetUserInfourl${i}`)) {	
-  GetUserInfourlArr.push($.getdata("GetUserInfourl${i}"));	
-  GetUserInfoheaderArr.push($.getdata("GetUserInfoheader${i}"));  
-  coinbodyArr.push($.getdata("coinbody${i}"));
-  accountManageheaderArr.push($.getdata("accountManageheader${i}")); 
-  taskbodyArr.push($.getdata("taskbody${i}"));
-  activitybodyArr.push($.getdata("activitybody${i}"));
-  addCoinbodyArr.push($.getdata("addCoinbody${i}"));
-  addCoin2bodyArr.push($.getdata("addCoin2body${i}"));    
-  reportAssbodyArr.push($.getdata("reportAssbody${i}")); 
-  reportAssheaderArr.push($.getdata("reportAssheader${i}"));  
-  cointowalletbodyArr.push($.getdata("cointowalletbody${i}"));
+  GetUserInfourlArr.push($.getdata(`GetUserInfourl${i}`));	
+  GetUserInfoheaderArr.push($.getdata(`GetUserInfoheader${i}`));  
+  coinbodyArr.push($.getdata(`coinbody${i}`));
+  accountManageheaderArr.push($.getdata(`accountManageheader${i}`)); 
+  taskbodyArr.push($.getdata(`taskbody${i}`));
+  activitybodyArr.push($.getdata(`activitybody${i}`));
+  addCoinbodyArr.push($.getdata(`addCoinbody${i}`));
+  addCoin2bodyArr.push($.getdata(`addCoin2body${i}`));    
+  reportAssbodyArr.push($.getdata(`reportAssbody${i}`)); 
+  reportAssheaderArr.push($.getdata(`reportAssheader${i}`));  
+  cointowalletbodyArr.push($.getdata(`cointowalletbody${i}`));
     }
   }
 }
-//CK
-if (isGetCookie = typeof $request !== 'undefined') {
-   GetCookie();
-   $.done()
-} 
 
 function GetCookie() {
 //用户名
@@ -427,31 +423,45 @@ if ($request && $request.url.indexOf("cointowallet") >= 0&&$request.body.indexOf
     } 
 }
 
-!(async () => {	
-  if (!GetUserInfourlArr[0]) {
+
+let isGetCookie = typeof $request !== 'undefined'
+if (isGetCookie) {
+  GetCookie()
+} else {
+  !(async () => {
+    await all();
+    await msgShow();
+  })()
+      .catch((e) => {
+        $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+      })
+      .finally(() => {
+        $.done();
+      })
+}
+
+
+async function all() {
+if (!GetUserInfourlArr[0]) {
     $.msg($.name, '提示：⚠️请点击前往获取cookie\n', 'http://athm.cn/rUcSMrc', {"open-url": "http://athm.cn/rUcSMrc"});
     return;
-  }
-  console.log(
-    `============ 共${GetUserInfourlArr.length}个${$.name}账号  =============\n`
+  } else {console.log(`============ 共${GetUserInfourlArr.length}个${$.name}账号  =============\n`
   );
-  console.log(`==================脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}=====================\n`)
-  
+  console.log(`==================脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}=====================\n`)}
+
   for (let i = 0; i < GetUserInfourlArr.length; i++) {
-    if (GetUserInfoheaderArr[i]) {
-      GetUserInfourlVal = GetUserInfourlArr[i];		
-      GetUserInfoheaderVal = GetUserInfoheaderArr[i];  
-      coinbodyVal = coinbodyArr[i];
-      accountManageheaderVal = accountManageheaderArr[i];
-      taskbodyVal = taskbodyArr[i];	  
-      activitybodyVal = activitybodyArr[i];	  
-      addCoinbodyVal = addCoinbodyArr[i];	  	  
-      addCoin2bodyVal = addCoin2bodyArr[i];	  	  
-      reportAssheaderVal = reportAssheaderArr[i];
-      reportAssbodyVal = reportAssbodyArr[i];	  
-      cointowalletbodyVal = cointowalletbodyArr[i];	  
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始【${$.name+$.index}】`) 
+  GetUserInfourlVal = GetUserInfourlArr[i];		
+  GetUserInfoheaderVal = GetUserInfoheaderArr[i];  
+  coinbodyVal = coinbodyArr[i];
+  accountManageheaderVal = accountManageheaderArr[i];
+  taskbodyVal = taskbodyArr[i];	  
+  activitybodyVal = activitybodyArr[i];
+  addCoinbodyVal = addCoinbodyArr[i];
+  addCoin2bodyVal = addCoin2bodyArr[i];
+  reportAssheaderVal = reportAssheaderArr[i];
+  reportAssbodyVal = reportAssbodyArr[i];	  
+  cointowalletbodyVal = cointowalletbodyArr[i];
+      await console.log(`-------------------------\n\n🟢开始运行【${$.name+(i+1)}】`) 
       await GetUserInfo();     
       await coin();
       await accountManage();
@@ -461,16 +471,9 @@ if ($request && $request.url.indexOf("cointowallet") >= 0&&$request.body.indexOf
       await addCoin2();
       await reportAss();
       //await cointowallet();
-      await msgShow();
-    }	  
+      
   }
-})()
-  .catch((e) => {
-    $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
-  })
-  .finally(() => {
-    $.done();
-  })
+}
 
 
 //用户名
