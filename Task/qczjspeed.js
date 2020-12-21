@@ -461,7 +461,7 @@ if (!GetUserInfourlArr[0]) {
   reportAssheaderVal = reportAssheaderArr[i];
   reportAssbodyVal = reportAssbodyArr[i];	  
   cointowalletbodyVal = cointowalletbodyArr[i];
-      await console.log(`-------------------------\n\n🟢开始运行【${$.name+(i+1)}】`) 
+      await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`) 
       await GetUserInfo();     
       await coin();
       await accountManage();
