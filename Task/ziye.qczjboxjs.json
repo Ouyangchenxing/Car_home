@@ -7,7 +7,7 @@
   "apps": [{
     "id": "qczjspeed",
     "name": "汽车之家极速版",
-    "keys": ["GetUserInfourl", "GetUserInfoheader", "coinbody", "accountManageheader", "taskbody", "activitybody", "addCoinbody", "addCoin2body", "reportAssbody", "reportAssheader", "cointowalletbody","GetUserInfourl2", "GetUserInfoheader2", "coinbody2", "accountManageheader2", "taskbody2", "activitybody2", "addCoinbody2", "addCoin2body2", "reportAssbody2", "reportAssheader2", "cointowalletbody2","GetUserInfourl3", "GetUserInfoheader3", "coinbody3", "accountManageheader3", "taskbody3", "activitybody3", "addCoinbody3", "addCoin2body3", "reportAssbody3", "reportAssheader3", "cointowalletbody3"],
+    "keys": ["GetUserInfourl", "GetUserInfoheader", "coinbody", "taskbody", "activitybody", "addCoinbody", "addCoin2body", "reportAssbody", "reportAssheader", "cointowalletbody","GetUserInfourl2", "GetUserInfoheader2", "coinbody2", "taskbody2", "activitybody2", "addCoinbody2", "addCoin2body2", "reportAssbody2", "reportAssheader2", "cointowalletbody2","GetUserInfourl3", "GetUserInfoheader3", "coinbody3", "taskbody3", "activitybody3", "addCoinbody3", "addCoin2body3", "reportAssbody3", "reportAssheader3", "cointowalletbody3"],
     "author": "@ziye",
     "settings": [{
         "id": "qczjSuffix",
