@@ -53,7 +53,7 @@ reportAssbodyVal     👉  reportAssBODY
 cointowalletbodyVal  👉  cointowalletBODY
 
 
-⚠️⚠️⚠️以上CK全部获取完以后，添加时段body重写，去125行设置ins的值，再按操作获取
+⚠️⚠️⚠️以上CK全部获取完以后，添加时段body重写，去boxjs里设置ins的值，再按操作获取body
 
 设置ins = 1
 点击 活动 右上角领惊喜福利 获取惊喜福利body
