@@ -654,8 +654,8 @@ function task(timeout = 0) {
           if (logs) $.log(`${$.name}, 日常任务🚩: ${data}`);
           $.task = JSON.parse(data);
       gksp = $.task.result.list[1].tasklist.find(item => item.id === 14);
-      flsp = $.task.result.list[1].tasklist.find(item => item.type === 18);
-      lqfl = $.task.result.list[1].tasklist.find(item => item.type === 35);
+      flsp = $.task.result.list[1].tasklist.find(item => item.id === 18);
+      lqfl = $.task.result.list[1].tasklist.find(item => item.id === 35);
   $.message +=  
   '【'+gksp.title+'】：奖励'+gksp.tiptxt+'，进度'+gksp.step+'\n'+
   '【'+flsp.title+'】：奖励'+flsp.tiptxt+'，进度'+flsp.step+'\n'+
