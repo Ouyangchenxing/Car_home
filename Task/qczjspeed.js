@@ -10,7 +10,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 ⚠️汽车之家极速版
 
 下载地址 http://athm.cn/rUcSMrc 邀请码 99558995
-助力活动入口
+助力活动入口 https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/qczjzl.png
 
 谢谢支持
 
@@ -47,7 +47,7 @@ activitybodyVal      👉  QCZJ_activityBODY
 addCoinbodyVal       👉  addCoinBODY
 addCoin2bodyVal      👉  addCoin2BODY
 
-点击 活动>>分享赚现金 自己助力自己 获取助力任务header  body 
+微信扫码 https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/qczjzl.png   然后自己助力自己 获取助力任务header  body 
 reportAssheaderVal   👉  reportAssHEADER
 reportAssbodyVal     👉  reportAssBODY
 
