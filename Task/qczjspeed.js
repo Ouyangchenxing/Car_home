@@ -582,14 +582,14 @@ if (!GetUserInfourlArr[0]) {
       await coin();
       await task();
       await activity();
-	  await Goldcoin();
-	  await video();
-	  await Welfarevideo();
-	  await Welfare();
+      await Goldcoin();
+      await video();
+      await Welfarevideo();
+      await Welfare();
       await addCoin();
       await addCoin2();
       await reportAss();
-      //await cointowallet();
+      await cointowallet();
       
   }
 }
