@@ -641,9 +641,8 @@ if (!Length) {
   }
   O = (`${$.name + (i + 1)}🔔`);
   await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`) 
-     
-    await coin();//账户信息 
-    await GetUserInfo();//用户名  
+      await GetUserInfo();//用户名   
+      await coin();//账户信息    
       await task();//日常任务
       await activity();//活动
 	  if (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 30) {
