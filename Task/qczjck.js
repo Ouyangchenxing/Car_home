@@ -72,7 +72,7 @@ let Z = 1;//到哪个账号结束
 
 
 const $ = Env("汽车之家极速版");
-$.idx = ($.idx = ($.getval('qeSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
+$.idx = ($.idx = ($.getval('qczjSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 const notify = $.isNode() ? require("./sendNotify") : "";
 
 let R=K
