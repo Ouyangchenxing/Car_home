@@ -963,9 +963,7 @@ function reportAss(timeout = 0) {
   return new Promise((resolve) => {
     setTimeout( ()=>{
 		do out = Math.floor(Math.random()*10000000);
-        while( out < 100 )		
-	   for(var i=0;i<1;i++){
-		 setTimeout( ()=>{	  
+        while( out < 10000 )				 	  
 	  let body = reportAssbodyVal.replace(/userAssistanceId=[0-9]{0,10}/, `userAssistanceId=${out}`)
       let url = {
         url:`https://openapi.autohome.com.cn/autohome/uc-news-quickappservice/msapi/dealers/reportAss`,
@@ -983,9 +981,7 @@ if($.reportAss.data==0)
         } finally {
           resolve()
         }
-      })
-	  },1000)
-	 }
+      })	  
     },timeout)
   })
 }
