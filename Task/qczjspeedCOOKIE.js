@@ -1,20 +1,20 @@
 
 
 //独立COOKIE文件     ck在``里面填写，多账号换行
-let GetUserInfourlVal= ''
-let GetUserInfoheaderVal= ''
-let coinbodyVal= ''
-let taskbodyVal= ''
-let activitybodyVal= ''
-let GoldcoinbodyVal= ''
-let videobodyVal= ''
-let WelfarevideobodyVal= ''
-let WelfarebodyVal= ''
-let addCoinbodyVal= ''
-let addCoin2bodyVal= ''
-let reportAssbodyVal= ''
-let reportAssheaderVal= ''
-let cointowalletbodyVal= ''
+let GetUserInfourlVal= ``
+let GetUserInfoheaderVal= ``
+let coinbodyVal= ``
+let taskbodyVal= ``
+let activitybodyVal= ``
+let GoldcoinbodyVal= ``
+let videobodyVal= ``
+let WelfarevideobodyVal= ``
+let WelfarebodyVal= ``
+let addCoinbodyVal= ``
+let addCoin2bodyVal= ``
+let reportAssbodyVal= ``
+let reportAssheaderVal= ``
+let cointowalletbodyVal= ``
 
 
 let qczjcookie = {
