@@ -581,6 +581,7 @@ console.log(`============ 提现标准为：${CASH} =============\n`);
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
   GetCookie()
+  $.done();
 } else {
   !(async () => {
     await all();
