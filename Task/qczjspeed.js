@@ -18,7 +18,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 12.23 去除14天任务显示，增加惊喜福利，视频，福利视频，福利 4个任务
 1.5 取消助力任务显示，可从活动入口进入，然后分享自己的助力，再助力自己获取助力ck
 1.9 优化，可固定ck，整合通知为1个，可boxjs或者Secrets 设置提现金额
-
+1.12  修复判定错误
 
 ⚠️一共9个位置 12个ck  14条 Secrets 
 多账号换行
@@ -650,15 +650,15 @@ if (!Length) {
 	  if (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 30) {
       await Goldcoin();//惊喜福利
 	  }
-	  if ($.activity.result && gksp.status == 0) {
+	  if ($.task.result && gksp.status == 0) {
       await video();//视频
 	  }
-	  if ($.activity.result && lqfl.status == 0) {
+	  if ($.task.result && lqfl.status == 0) {
       await Welfare();//福利
 	  }
       await addCoin();//时段任务
       await addCoin2();//时段翻倍
-	  if ($.activity.result&&flsp.status == 0) {
+	  if ($.task.result&&flsp.status == 0) {
 	  await Welfarevideo();//福利视频
       await reportAss();//助力任务
 	  }
