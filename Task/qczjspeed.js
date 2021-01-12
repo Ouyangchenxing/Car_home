@@ -647,7 +647,7 @@ if (!Length) {
       await coin();//账户信息    
       await task();//日常任务
       await activity();//活动
-	  if (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 30) {
+	  if ($.task.result &&nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 30) {
       await Goldcoin();//惊喜福利
 	  }
 	  if ($.task.result && gksp.status == 0) {
@@ -726,10 +726,7 @@ function coin(timeout = 0) {
   return new Promise((resolve) => {
     setTimeout( ()=>{
       let url = {
-        url:`https://mobile.app.autohome.com.cn/speedgrow_v1.0.0/taskcenter/init/coin`,
-
-
-        
+        url:`https://mobile.app.autohome.com.cn/speedgrow_v1.0.0/taskcenter/init/coin`,        
         headers: JSON.parse(GetUserInfoheaderVal),
 		body: coinbodyVal,
       }
@@ -760,6 +757,7 @@ function task(timeout = 0) {
         try {
           if (logs) $.log(`${O}, 日常任务🚩: ${data}`);
           $.task = JSON.parse(data);
+	if ($.task.result){	
       gksp = $.task.result.list[1].tasklist.find(item => item.id === 14);
       flsp = $.task.result.list[1].tasklist.find(item => item.id === 18);
       lqfl = $.task.result.list[1].tasklist.find(item => item.id === 35);
@@ -767,6 +765,7 @@ function task(timeout = 0) {
   '【'+gksp.title+'】：奖励'+gksp.tiptxt+'，进度'+gksp.step+'\n'+
   '【'+flsp.title+'】：奖励'+flsp.tiptxt+'，进度'+flsp.step+'\n'+
   '【'+lqfl.title+'】：奖励'+lqfl.tiptxt+'\n';
+        }
         } catch (e) {
           $.logErr(e, resp);
         } finally {
@@ -790,9 +789,6 @@ function activity(timeout = 0) {
           if (logs) $.log(`${O}, 活动🚩: ${data}`);
           $.activity = JSON.parse(data);
   let activitydex=$.activity.result.list
-  let activityxyz=activitydex[1].data.activitycard.headdata
-  let activityabc=activitydex[1].data.activitycard.currenttask
-  let activitydef=activitydex[1].data.activitycard.activityinfo
   $.message +='【'+$.activity.result.title+'】：已连续签到'+activitydex[0].data.signdaycount+'天，今日签到奖励'+activitydex[0].data.signlist[activitydex[0].data.signdaycount-1].prize+'金币'+'\n'
   
         } catch (e) {
