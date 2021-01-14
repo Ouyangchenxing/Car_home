@@ -31,10 +31,7 @@ jobs:
         QCZJ_reportAssHEADER: ${{ secrets.QCZJ_reportAssHEADER }}
         QCZJ_reportAssBODY: ${{ secrets.QCZJ_reportAssBODY }}
         QCZJ_cointowalletBODY: ${{ secrets.QCZJ_cointowalletBODY }}
-        QCZJ_CASH: ${{ secrets.QCZJ_CASH }}
-
-        
-         
+        QCZJ_CASH: ${{ secrets.QCZJ_CASH }}       
     steps:
       - name: Checkout
         run: |
