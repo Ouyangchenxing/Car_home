@@ -8,8 +8,6 @@ on:
      - cron: '*/30 * * * *'
   watch:
     types: started
-
-@@ -15,20 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
