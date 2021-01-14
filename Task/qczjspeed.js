@@ -339,10 +339,16 @@ if (!Length) {
   addCoin2bodyVal = addCoin2bodyArr[i];
   }
 cookie=JSON.parse(GetUserInfoheaderVal)["Cookie"];
-app_userid=cookie.substring(cookie.indexOf("app_userid")+11,cookie.indexOf("; app_ver"));
-pcpopclub=cookie.substring(cookie.indexOf("pcpopclub")+10,cookie.indexOf("; sessionlogin"));
-app_sign=cookie.substring(cookie.indexOf("app_sign")+9,cookie.indexOf("; app_sysver"));
-app_deviceid=cookie.substring(cookie.indexOf("app_deviceid")+13,cookie.indexOf("; app_devicename"));
+cookie1=cookie.substr(cookie.indexOf("app_userid"),20);
+cookie2=cookie.substr(cookie.indexOf("pcpopclub"),50);
+cookie3=cookie.substr(cookie.indexOf("app_sign"),41);
+cookie4=cookie.substr(cookie.indexOf("app_deviceid"),53);
+
+app_userid=cookie1.substring(cookie1.indexOf("app_userid")+11);
+pcpopclub=cookie2.substring(cookie2.indexOf("pcpopclub")+10);
+app_sign=cookie3.substring(cookie3.indexOf("app_sign")+9);
+app_deviceid=cookie4.substring(cookie4.indexOf("app_deviceid")+13);
+
 sessionid=cookie.substring(cookie.indexOf("sessionid")+10);
 ts = Math.round((new Date().getTime() +
     new Date().getTimezoneOffset() * 60 * 1000 +
