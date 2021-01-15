@@ -15,14 +15,10 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 //请先确定boxjs已经存在ck，想要导出哪个值，就设置为1
 
 
-//用户名url
-const GetUserInfourl = 1
+
 
 //用户名header
 const GetUserInfoheader = 0
-
-//时段body
-const coinbody = 0
 
 //任务body
 const taskbody = 0
@@ -30,17 +26,6 @@ const taskbody = 0
 //活动body
 const activitybody = 0
 
-//惊喜福利body
-const Goldcoinbody = 0
-
-//视频body
-const videobody = 0
-
-//福利视频body
-const Welfarevideobody = 0
-
-//福利body
-const Welfarebody = 0
 
 //时段body
 const addCoinbody = 0
@@ -48,14 +33,6 @@ const addCoinbody = 0
 //时段翻倍body
 const addCoin2body = 0
 
-//助力body
-const reportAssbody = 0
-
-//助力header，
-const reportAssheader = 0
-
-//提现body
-const cointowalletbody = 0
 
 
 
@@ -76,75 +53,41 @@ $.idx = ($.idx = ($.getval('qczjSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : '
 const notify = $.isNode() ? require("./sendNotify") : "";
 
 let R=K
-const GetUserInfourlArr = [];
-let GetUserInfourlVal = "";
 const GetUserInfoheaderArr = [];
 let GetUserInfoheaderVal = "";
-const coinbodyArr = [];
-let coinbodyVal = "";
 const taskbodyArr = [];
 let taskbodyVal = "";
 const activitybodyArr = [];
 let activitybodyVal = "";
-const GoldcoinbodyArr = [];
-let GoldcoinbodyVal = "";
-const videobodyArr = [];
-let videobodyVal = "";
-const WelfarevideobodyArr = [];
-let WelfarevideobodyVal = "";
-const WelfarebodyArr = [];
-let WelfarebodyVal = "";
 const addCoinbodyArr = [];
 let addCoinbodyVal = "";
 const addCoin2bodyArr = [];
 let addCoin2bodyVal = "";
-const reportAssbodyArr = [];
-let reportAssbodyVal = "";
-const reportAssheaderArr = [];
-let reportAssheaderVal = "";
-const cointowalletbodyArr = [];
-let cointowalletbodyVal = "";
 
 
-  GetUserInfourlArr.push($.getdata("GetUserInfourl"));	
+
+
   GetUserInfoheaderArr.push($.getdata("GetUserInfoheader"));  
-  coinbodyArr.push($.getdata("coinbody"));
   taskbodyArr.push($.getdata("taskbody"));
   activitybodyArr.push($.getdata("activitybody"));
-  GoldcoinbodyArr.push($.getdata("Goldcoinbody"));  
-  videobodyArr.push($.getdata("videobody"));  
-  WelfarevideobodyArr.push($.getdata("Welfarevideobody"));  
-  WelfarebodyArr.push($.getdata("Welfarebody"));  
   addCoinbodyArr.push($.getdata("addCoinbody"));
   addCoin2bodyArr.push($.getdata("addCoin2body"));    
-  reportAssbodyArr.push($.getdata("reportAssbody")); 
-  reportAssheaderArr.push($.getdata("reportAssheader"));  
-  cointowalletbodyArr.push($.getdata("cointowalletbody"));
   // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
   let qczjCount = ($.getval('qczjCount') || '1') - 0;
   for (let i = 2; i <= qczjCount; i++) {
-    if ($.getdata(`GetUserInfourl${i}`)) {	
-  GetUserInfourlArr.push($.getdata(`GetUserInfourl${i}`));	
+    if ($.getdata(`GetUserInfoheader${i}`)) {	
   GetUserInfoheaderArr.push($.getdata(`GetUserInfoheader${i}`));  
-  coinbodyArr.push($.getdata(`coinbody${i}`));
   taskbodyArr.push($.getdata(`taskbody${i}`));
   activitybodyArr.push($.getdata(`activitybody${i}`));
-  GoldcoinbodyArr.push($.getdata(`Goldcoinbody${i}`));  
-  videobodyArr.push($.getdata(`videobody${i}`));  
-  WelfarevideobodyArr.push($.getdata(`Welfarevideobody${i}`));  
-  WelfarebodyArr.push($.getdata(`Welfarebody${i}`));    
   addCoinbodyArr.push($.getdata(`addCoinbody${i}`));
   addCoin2bodyArr.push($.getdata(`addCoin2body${i}`));    
-  reportAssbodyArr.push($.getdata(`reportAssbody${i}`)); 
-  reportAssheaderArr.push($.getdata(`reportAssheader${i}`));  
-  cointowalletbodyArr.push($.getdata(`cointowalletbody${i}`));
     }
   }
 
 
 
  console.log(
-    `============ 共${GetUserInfourlArr.length}个${$.name}账号  =============\n`
+    `============ 共${GetUserInfoheaderArr.length}个${$.name}账号  =============\n`
   );
   console.log(
     `============ 脚本执行-北京时间(UTC+8)：${new Date(
@@ -161,7 +104,7 @@ if (Z<K){
 }
 all();
 function all() {
-if (!GetUserInfourlArr[K-1]) {
+if (!GetUserInfoheaderArr[K-1]) {
 if (K>R)
     $.msg($.name+R+'到'+(K-1)+'打印成功'+K+'到'+Z+'打印失败', '⚠️提示：请先获取'+K+'到'+Z+'的ck','并在boxjs里设置好账号数')
 
@@ -175,21 +118,13 @@ if (Z==R)
    $.done();
   }
 
-  GetUserInfourlVal = GetUserInfourlArr[K-1];	
+
   GetUserInfoheaderVal = GetUserInfoheaderArr[K-1];  
-  coinbodyVal = coinbodyArr[K-1];
   taskbodyVal = taskbodyArr[K-1];
   activitybodyVal = activitybodyArr[K-1];
-  GoldcoinbodyVal = GoldcoinbodyArr[K-1];  
-  videobodyVal = videobodyArr[K-1];  
-  WelfarevideobodyVal = WelfarevideobodyArr[K-1];  
-  WelfarebodyVal = WelfarebodyArr[K-1];  
   addCoinbodyVal = addCoinbodyArr[K-1];
   addCoin2bodyVal = addCoin2bodyArr[K-1];    
-  reportAssbodyVal = reportAssbodyArr[K-1]; 
-  reportAssheaderVal = reportAssheaderArr[K-1];  
-  cointowalletbodyVal = cointowalletbodyArr[K-1];
-
+  
 
 
 let GetUserInfoheaderjson=JSON.parse(GetUserInfoheaderVal)
@@ -199,20 +134,13 @@ GetUserInfoheaderjson['User-Agent']=''+agent+''
 GetUserInfoheaderVal=JSON.stringify(GetUserInfoheaderjson)
 
 
-if(GetUserInfourl==1)console.log(GetUserInfourlVal+GG)	
+
 if(GetUserInfoheader==1)console.log(GetUserInfoheaderVal+GG)
-if(coinbody==1)console.log(coinbodyVal+GG)
 if(taskbody==1)console.log(taskbodyVal+GG)
 if(activitybody==1)console.log(activitybodyVal+GG)
-if(Goldcoinbody==1)console.log(GoldcoinbodyVal+GG)
-if(videobody==1)console.log(videobodyVal+GG)
-if(Welfarevideobody==1)console.log(WelfarevideobodyVal+GG)
-if(Welfarebody==1)console.log(WelfarebodyVal+GG)
 if(addCoinbody==1)console.log(addCoinbodyVal+GG)
 if(addCoin2body==1)console.log(addCoin2bodyVal+GG)
-if(reportAssbody==1)console.log(reportAssbodyVal+GG) 
-if(reportAssheader==1)console.log(reportAssheaderVal+GG)
-if(cointowalletbody==1)console.log(cointowalletbodyVal+GG)
+
 
 
 
