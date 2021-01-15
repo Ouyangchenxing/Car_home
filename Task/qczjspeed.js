@@ -339,17 +339,16 @@ if (!Length) {
   addCoin2bodyVal = addCoin2bodyArr[i];
   }
 cookie=JSON.parse(GetUserInfoheaderVal)["Cookie"];
-cookie1=cookie.substr(cookie.indexOf("app_userid"),20);
-cookie2=cookie.substr(cookie.indexOf("pcpopclub"),50);
-cookie3=cookie.substr(cookie.indexOf("app_sign"),41);
-cookie4=cookie.substr(cookie.indexOf("app_deviceid"),53);
 
-app_userid=cookie1.substring(cookie1.indexOf("app_userid")+11).replace(';ap','').replace(';a','').replace(';pc','').replace(';p','').replace(';se','').replace(';s','').replace(';','');
-pcpopclub=cookie2.substring(cookie2.indexOf("pcpopclub")+10);
-app_sign=cookie3.substring(cookie3.indexOf("app_sign")+9);
-app_deviceid=cookie4.substring(cookie4.indexOf("app_deviceid")+13);
-
-sessionid=cookie.substring(cookie.indexOf("sessionid")+10);
+let arr=cookie.split(';');
+  app_userid=arr.find(item => {   return item.indexOf('app_userid')>-1}).trim().split('=')[1]
+  pcpopclub=arr.find(item => {   return item.indexOf('pcpopclub')>-1}).trim().split('=')[1]
+  app_sign=arr.find(item => {   return item.indexOf('app_sign')>-1}).trim().split('=')[1]
+  app_deviceid=arr.find(item => {   return item.indexOf('app_deviceid')>-1}).trim().split('=')[1]
+  sessionid=arr.find(item => {   return item.indexOf('sessionid')>-1})
+  if(sessionid){
+    sessionid=sessionid.trim().split('=')[1]
+  }
 ts = Math.round((new Date().getTime() +
     new Date().getTimezoneOffset() * 60 * 1000 +
     8 * 60 * 60 * 1000)/1000).toString();
