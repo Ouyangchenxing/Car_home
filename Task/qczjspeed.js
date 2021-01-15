@@ -20,7 +20,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 1.9 优化，可固定ck，整合通知为1个，可boxjs或者Secrets 设置提现金额
 1.12  修复判定错误
 1.13 4个任务失效，故去除,精简ck,只需要5个，无需重新获取，调整提现时间为20点到21点
-
+1.15 修复ck报错问题
 
 ⚠️一共3个位置 5个ck  👉 6条 Secrets 
 多账号换行
@@ -344,7 +344,7 @@ cookie2=cookie.substr(cookie.indexOf("pcpopclub"),50);
 cookie3=cookie.substr(cookie.indexOf("app_sign"),41);
 cookie4=cookie.substr(cookie.indexOf("app_deviceid"),53);
 
-app_userid=cookie1.substring(cookie1.indexOf("app_userid")+11);
+app_userid=cookie1.substring(cookie1.indexOf("app_userid")+11).replace(';ap','').replace(';a','').replace(';pc','').replace(';p','').replace(';se','').replace(';s','').replace(';','');
 pcpopclub=cookie2.substring(cookie2.indexOf("pcpopclub")+10);
 app_sign=cookie3.substring(cookie3.indexOf("app_sign")+9);
 app_deviceid=cookie4.substring(cookie4.indexOf("app_deviceid")+13);
