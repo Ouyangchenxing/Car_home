@@ -229,10 +229,10 @@ if ($.isNode()) {
   addCoin2bodyArr.push($.getdata("addCoin2body"));    
   // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
   if ("qczjCASH") {
-      CASH = $.getval("qczjCASH");
+      CASH = $.getval("qczjCASH") || '0';
     }
 if ("qczjCASHTIME") {
-      CASHTIME = $.getval("qczjCASHTIME");
+      CASHTIME = $.getval("qczjCASHTIME") || '0';
     }	
   let qczjCount = ($.getval('qczjCount') || '1') - 0;
   for (let i = 2; i <= qczjCount; i++) {
