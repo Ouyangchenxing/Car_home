@@ -20,6 +20,7 @@ jobs:
         QCZJ_addCoinBODY: ${{ secrets.QCZJ_addCoinBODY }}
         QCZJ_addCoin2BODY: ${{ secrets.QCZJ_addCoin2BODY }}
         QCZJ_CASH: ${{ secrets.QCZJ_CASH }}
+        QCZJ_CASHTIME: ${{ secrets.QCZJ_CASHTIME }}
     steps:
       - name: Checkout
         run: |
