@@ -22,6 +22,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 1.13 4个任务失效，故去除,精简ck,只需要5个，无需重新获取，调整提现时间为20点到21点
 1.15 修复ck报错问题
 1.17 修复任务模块报错导致的 助力问题
+1.20 增加提现时间变量
 
 ⚠️一共3个位置 5个ck  👉 6条 Secrets 
 多账号换行
@@ -49,7 +50,8 @@ addCoin2bodyVal      👉  QCZJ_addCoin2BODY
 设置提现变量 可设置 0.5 2  5 10 20 
 CASH  👉  QCZJ_CASH
 
-
+设置提现时间变量 可设置 0.5 2  5 10 20 
+CASHTIME  👉  QCZJ_CASHTIME
 
 ⚠️主机名以及重写👇
 
@@ -102,7 +104,7 @@ const notifyttt = 1// 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2;// 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
 
 let tz,fx;
-$.message = '', COOKIES_SPLIT = '', CASH = '';
+$.message = '', COOKIES_SPLIT = '', CASHTIME = '', CASH = '';
 
 
 const GetUserInfoheaderArr = [];
@@ -131,6 +133,8 @@ const nowTimes = new Date(
 // 没有设置 QCZJ_CASH 则默认为 0 不提现
 if ($.isNode()) {
  CASH = process.env.QCZJ_CASH || 0;
+// 没有设置 QCZJ_CASHTIME 则默认为 0点后提现
+ CASHTIME = process.env.QCZJ_CASHTIME || 0;
 } 
 if ($.isNode() && process.env.QCZJ_GetUserInfoHEADER) {
   COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
@@ -227,6 +231,9 @@ if ($.isNode()) {
   if ("qczjCASH") {
       CASH = $.getval("qczjCASH");
     }
+if ("qczjCASHTIME") {
+      CASHTIME = $.getval("qczjCASHTIME");
+    }	
   let qczjCount = ($.getval('qczjCount') || '1') - 0;
   for (let i = 2; i <= qczjCount; i++) {
     if ($.getdata(`GetUserInfoheader${i}`)) {	
@@ -297,7 +304,8 @@ console.log(
 console.log(
   `============ 共 ${Length} 个${$.name}账号=============\n`
 );
-console.log(`============ 提现标准为：${CASH} =============\n`);
+console.log(`============ 提现标准为：${CASH}元 =============\n`);
+console.log(`============ 提现时间为：${CASHTIME}点后 =============\n`);
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
   GetCookie()
@@ -366,11 +374,10 @@ tts = Math.round(new Date().getTime() +
       await reportAss2();//助力任务2 	  
       await addCoin();//时段任务
       await addCoin2();//时段翻倍
-	  if (nowTimes.getHours() >= 20 && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 59)) {
-        if (CASH >= 0.5 && $.coin.result && $.coin.result.nowmoney >= CASH) {
+        if (nowTimes.getHours() >= CASHTIME && CASH >= 0.5 && $.coin.result && $.coin.result.nowmoney >= CASH) {
           await cointowallet();//提现
         }
-      }
+      
   }
 }
 //通知
