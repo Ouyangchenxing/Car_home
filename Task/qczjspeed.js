@@ -233,7 +233,7 @@ if ($.isNode()) {
       CASH = $.getval("qczjCASH") || '0';
     }
 if ("qczjCASHTIME") {
-      CASHTIME = $.getval("qczjCASHTIME") || '0';
+      CASHTIME = $.getval("qczjCASHTIME") || '10';
     }	
   let qczjCount = ($.getval('qczjCount') || '1') - 0;
   for (let i = 2; i <= qczjCount; i++) {
