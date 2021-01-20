@@ -23,6 +23,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 1.15 修复ck报错问题
 1.17 修复任务模块报错导致的 助力问题
 1.20 增加提现时间变量
+1.21 去除助力任务 名爵5
 
 ⚠️一共3个位置 5个ck  👉 6条 Secrets 
 多账号换行
@@ -370,8 +371,7 @@ tts = Math.round(new Date().getTime() +
       await coin();//账户信息    
       await task();//日常任务
       await activity();//活动
-      await reportAss();//助力任务
-      await reportAss2();//助力任务2 	  
+      await reportAss();//助力任务	  
       await addCoin();//时段任务
       await addCoin2();//时段翻倍
         if (nowTimes.getHours() >= CASHTIME && CASH >= 0.5 && $.coin.result && $.coin.result.nowmoney >= CASH) {
@@ -553,7 +553,7 @@ function reportAss(timeout = 0) {
     setTimeout( ()=>{
 		do out = Math.floor(Math.random()*10000000);
         while( out < 10000 )				 	  
-	  let body = `_appid=car&taskId=qczjjsb_lb_mg5&userId=${app_userid}&userAssistanceId=${out}&_v=qauto_wxapp1.0&_timestamp=${ts}&_sign=${app_sign}`
+	  let body = `_appid=car&taskId=qczjjsb_lb_mglh&userId=${app_userid}&userAssistanceId=${out}&_v=qauto_wxapp1.0&_timestamp=${ts}&_sign=${app_sign}`
 header = GetUserInfoheaderVal.replace(/q=1/g, `q=1","Referer":"https://servicewechat.com/wx8ebc8f3586c7321f/160/page-frame.html","Content-Type":"application/x-www-form-urlencoded;charset=utf-8","Host":"openapi.autohome.com.cn`)
       let url = {
         url:`https://openapi.autohome.com.cn/autohome/uc-news-quickappservice/msapi/dealers/reportAss`,
@@ -575,34 +575,7 @@ if($.reportAss.data==0)
     },timeout)
   })
 }
-//助力任务2
-function reportAss2(timeout = 0) {
-  return new Promise((resolve) => {
-    setTimeout( ()=>{
-		do out = Math.floor(Math.random()*10000000);
-        while( out < 10000 )				 	  
-	  let body = `_appid=car&taskId=qczjjsb_lb_mglh&userId=${app_userid}&userAssistanceId=${out}&_v=qauto_wxapp1.0&_timestamp=${ts}&_sign=${app_sign}`
-header = GetUserInfoheaderVal.replace(/q=1/g, `q=1","Referer":"https://servicewechat.com/wx8ebc8f3586c7321f/160/page-frame.html","Content-Type":"application/x-www-form-urlencoded;charset=utf-8","Host":"openapi.autohome.com.cn`)
-      let url = {
-        url:`https://openapi.autohome.com.cn/autohome/uc-news-quickappservice/msapi/dealers/reportAss`,
-        headers: JSON.parse(header),
-		body: body,
-      }
-      $.post(url, async(err, resp, data) => {
-        try {
-          if (logs) $.log(`${O}, 助力任务2🚩: ${data}`);
-          $.reportAss2 = JSON.parse(data);
-if($.reportAss2.data==0)
-  $.message +='【助力任务2】：助力成功\n';  
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve()
-        }
-      })	  
-    },timeout)
-  })
-}
+
 //提现
 function cointowallet(timeout = 0) {
   return new Promise((resolve) => {
