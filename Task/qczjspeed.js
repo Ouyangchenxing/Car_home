@@ -461,8 +461,10 @@ function task(timeout = 0) {
           $.task = JSON.parse(data);
 	if ($.task.result){	
       fx = $.task.result.list[1].tasklist.find(item => item.title === '分享赚现金');
+		if (fx){
   $.message +=  
   '【'+fx.title+'】：奖励'+fx.tiptxt+'，进度'+fx.step+'\n'
+	}		
         }
         } catch (e) {
           $.logErr(e, resp);
