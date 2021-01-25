@@ -24,6 +24,7 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/QCZJSPEED/main/Task/ziye.q
 1.17 修复任务模块报错导致的 助力问题
 1.20 增加提现时间变量
 1.21 去除助力任务 名爵5
+1.25 修复任务消失后的显示错误
 
 ⚠️一共3个位置 5个ck  👉 6条 Secrets 
 多账号换行
